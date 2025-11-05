@@ -1,13 +1,29 @@
 import style from "./login.module.css";
 
 
-function login() {
+function Login() {
+   const handleSubmit = (e)=>{
+    e.preventDefault()
+    console.log("form submitted");
+
+    
+   }
   return (
-    <div>
-        <h1 className={style.title}>Login Page</h1>
+    <>
+    <div className={style.wrapper}>
+      <div className={style.formwrapper}>
+        <form onSubmit={handleSubmit}>
+            <input type="text" name="hamza" placeholder="Enter name" />
+          <button type="submit">Submit</button>
+        </form>
+      </div>
+
+    
+
         
     </div>
+    </>
   )
 }
 
-export default login
+export default Login

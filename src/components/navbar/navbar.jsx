@@ -1,3 +1,4 @@
+import { Link } from "react-router";
 import style from "./navbar.module.css";
 
 
@@ -9,6 +10,8 @@ function Navbar() {
       <div className={style.logo}>
         <img src="./logo.webp" alt="" />
       </div>
+       <Link to="/">Home</Link>
+        <Link to="signup">About</Link>
     </div>
   )
 }

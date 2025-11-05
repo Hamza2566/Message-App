@@ -1,8 +1,9 @@
 import { useEffect, useState } from 'react'
 import './App.css'
 import Navbar from './components/navbar/navbar';
+import { Outlet } from 'react-router';
 
-function App() {
+function Layout() {
   const [message, setMessage] = useState("Loading...")
 
   useEffect(() => {
@@ -20,9 +21,9 @@ function App() {
     <>
 
       <Navbar/ >
-      <h1>{message}</h1>
+      <Outlet />
     </>
   )
 }
 
-export default App
+export default Layout

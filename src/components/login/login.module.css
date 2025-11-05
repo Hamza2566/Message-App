@@ -1,0 +1,15 @@
+.wrapper{
+    border: 2px solid red;
+   display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 91.3vh;
+    
+}
+.formwrapper{
+    border: 2px solid black;
+    width: 30%;
+    height: 60vh;
+    border-radius: 10px;
+}
