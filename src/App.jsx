@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import './App.css'
+import Navbar from './components/navbar/navbar';
 
 function App() {
   const [message, setMessage] = useState("Loading...")
@@ -14,8 +15,11 @@ function App() {
       });
   }, [])
 
+  
   return (
     <>
+
+      <Navbar/ >
       <h1>{message}</h1>
     </>
   )

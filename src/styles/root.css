@@ -1,0 +1,25 @@
+:root {
+  /* 🎨 Main Colors Used Throughout the App */
+  --color-primary: #4f46e5;   /* Deep purple-blue — gives a modern tech feel */
+  --color-primary-light: #818cf8; /* Lighter version of purple — good for hover glow */
+
+  /* 🏙️ Background Colors */
+  --color-bg: #0f172a;        /* Very dark blue — looks clean and makes colors pop */
+  --color-bg-light: #1e293b;  /* Slightly lighter — helps parts like navbar stand out */
+
+  /* 🧾 Text Colors */
+  --color-text: #e2e8f0;      /* Bright text that’s easy to read on dark background */
+  --color-text-muted: #94a3b8; /* Dimmer text for less important info (like timestamps) */
+
+  /* ✨ Accent Colors (fun and highlighty stuff) */
+  --color-accent: #22d3ee;    /* Bright cyan — looks “alive” and eye-catching */
+  --color-accent-pink: #ec4899; /* Pink — for fun things like badges or buttons */
+
+  /* ✅ / ❌ Status Colors */
+  --color-success: #10b981;   /* Green = good (like success messages) */
+  --color-error: #ef4444;     /* Red = bad (like error messages) */
+
+  /* 🧱 Borders & Shadows */
+  --color-border: #334155;    /* Soft dark border that separates sections */
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.3); /* Cool shadow effect */
+}
