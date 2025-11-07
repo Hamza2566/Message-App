@@ -2,8 +2,23 @@ import style from "./login.module.css";
 
 
 function Login() {
-   const handleSubmit = (e)=>{
+   const handleSubmit = async (e)=>{
     e.preventDefault()
+   const data = {
+  username: e.target.username.value,
+  password: e.target.password.value
+};
+   
+   const response = await fetch('/api/login',{
+    method:"POST",
+    headers:{
+      'content-type':'application/json'
+    },
+    body:JSON.stringify(data)
+    
+   })
+  const result = await response.json();      // Convert backend’s response → JS
+  console.log(result);
     console.log("form submitted");
 
     
@@ -12,8 +27,14 @@ function Login() {
     <>
     <div className={style.wrapper}>
       <div className={style.formwrapper}>
+        <div className={style.header}>
+          <h2>Login</h2>
+        </div>
         <form onSubmit={handleSubmit}>
-            <input type="text" name="hamza" placeholder="Enter name" />
+          <label htmlFor="name">Username</label>
+            <input type="text" name="username"/>
+             <label htmlFor="name">Password</label>
+            <input type="password" name="password" id="password" />
           <button type="submit">Submit</button>
         </form>
       </div>
