@@ -9,7 +9,7 @@ function Login() {
   password: e.target.password.value
 };
    
-   const response = await fetch('/api/login',{
+   const response = await fetch('/api/auth/signin',{
     method:"POST",
     headers:{
       'content-type':'application/json'
