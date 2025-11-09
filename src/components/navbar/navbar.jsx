@@ -10,8 +10,8 @@ function Navbar() {
       <div className={style.logo}>
         <img src="./logo.webp" alt="" />
       </div>
-       <Link to="/">Home</Link>
-        <Link to="signup">About</Link>
+       <Link to="/signup">Home</Link>
+        
     </div>
   )
 }
