@@ -1,72 +1,47 @@
+/* ===================== 🧊 CYBER ICE THEME ===================== */
 :root {
-  /* ======================================
-     BRAND COLORS
-     These are the main colors for your app.
-  ====================================== */
+  /* 🌈 MAIN COLORS — Cold tech colors */
+  --primary-color: #4f46e5;        /* Indigo: buttons + your messages */
+  --secondary-color: #38bdf8;      /* Ice blue: highlights */
+  --accent-color: #a3f3ff;         /* Light neon blue: online or success */
 
-  /* Primary brand color - main color of buttons, links, highlights */
-  --primary: #6c5ce7;
+  /* 🖼 BACKGROUNDS — Ice + metal */
+  --background-light: #f0f9ff;     /* Very light ice blue */
+  --background-dark: #111827;      /* Dark blue steel */
+  --chat-bubble-incoming: #dbeafe; /* Soft ice blue */
+  --chat-bubble-outgoing: #4f46e5; /* Indigo bubble */
 
-  /* Accent color - extra color to make things pop (like notifications, icons) */
-  --accent: #00cec9;
+  /* ✏️ TEXT COLORS */
+  --text-primary: #0f172a;         /* Dark navy */
+  --text-secondary: #64748b;       /* Gray/blue text */
+  --text-on-primary: #ffffff;      /* White text inside indigo */
 
-  /* ======================================
-     BACKGROUND COLORS
-     These are used for different parts of the app background.
-  ====================================== */
+  /* 🟠 SHAPES & SHADOWS */
+  --border-radius: 12px;
+  --shadow-light: 0 2px 10px rgba(79, 70, 229, 0.2);
+  --shadow-dark: 0 2px 10px rgba(0,0,0,0.4);
 
-  /* Main background color for the whole app */
-  --bg-main: #0f0f13;
+  /* ⚡ ANIMATION SPEED */
+  --transition-speed: 0.3s;
 
-  /* Secondary background color for cards, menus, or sidebars */
-  --bg-secondary: #1a1a21;
+  /* 🎧 STATUS COLORS */
+  --online-color: #a3f3ff;         /* Neon cyan */
+  --away-color: #facc15;           /* Yellow */
+  --busy-color: #ef4444;           /* Red */
 
-  /* Tertiary background color for small sections or hover effects */
-  --bg-tertiary: #22222b;
+  /* 📱 UI COLORS */
+  --button-hover: #4338ca;         /* Darker indigo */
+  --input-bg: #e2e8f0;             /* Light gray */
+  --icon-color: #94a3b8;           /* Steel gray */
 
-  /* ======================================
-     TEXT COLORS
-     These are for different types of text.
-  ====================================== */
-
-  /* Main text color - used for normal text */
-  --text-main: #ffffff;
-
-  /* Secondary text color - used for less important text */
-  --text-secondary: #c7c7d1;
-
-  /* Muted text - very light text for hints, placeholders */
-  --text-muted: #8e8e9a;
-
-  /* ======================================
-     BORDER COLORS
-     For lines and edges in UI
-  ====================================== */
-
-  /* Light borders - subtle lines between sections */
-  --border-light: #2f2f39;
-
-  /* Strong borders - more visible lines for cards or inputs */
-  --border-strong: #40404c;
-
-  /* ======================================
-     STATUS COLORS
-     For messages like success, error, warnings
-  ====================================== */
-
-  --success: #00b894;  /* Green - used when something works */
-  --error: #ff7675;    /* Red - used when something goes wrong */
-  --warning: #fdcb6e;  /* Yellow/orange - used for warnings */
-
-  /* ======================================
-     CHAT BUBBLE COLORS
-     Colors for sent and received messages
-  ====================================== */
-
-  --bubble-sent: #6c5ce7;      /* Color of your messages */
-  --bubble-received: #2f3640;  /* Color of messages from other people */
+  /* 🪟 SIDEBAR & HEADER */
+  --sidebar-bg: #e0f2fe;
+  --header-bg: #ffffff;
+  --header-border: #cbd5e1;
 }
-*{
-   margin: 0;
-   padding: 0;
+
+
+* {
+  margin: 0;
+  padding: 0;
 }

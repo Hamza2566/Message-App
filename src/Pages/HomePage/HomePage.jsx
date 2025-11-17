@@ -1,22 +1,23 @@
 import { Outlet, Link } from 'react-router-dom';
-import './HomePage.module.css'; 
+import  style from'./HomePage.module.css'; 
 
 export default function HomePage() {
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* LEFT SIDE */}
-      <div style={{ flex: 1, background: '#4a90e2', color: 'white', padding: 40 }}>
-        <h1>Chat App</h1>
-        <p>Connect with friends instantly and chat in real time.</p>
+      <div  className={style.leftside}>
+        <h1>Chatterly</h1>
+        <img src="./message.png" alt="" className={style.img} />
+        <p>Connect with friends instantly and chat in <span className={style.unique}>Chatterly.</span></p>
       </div>
 
       {/* RIGHT SIDE */}
-      <div style={{ flex: 1, padding: 40 }}>
+      <div  className={style.rightside}>
         {/* Child routes render here */}
         <Outlet />
 
         {/* Links to switch */}
-        <div style={{ marginTop: 20 }}>
+        <div className={style.switch}>
           <Link to="/">Sign In</Link> | <Link to="/signup">Sign Up</Link>
         </div>
       </div>

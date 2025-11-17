@@ -1,7 +1,8 @@
 .container {
   display: flex;
   height: 100vh;
-  background: var(--background);
+  /* background: var(--background); */
+
 }
 
 .left {
@@ -35,4 +36,32 @@
 
 .switchLinks {
   margin-top: 20px;
+}
+.img{
+ width: 30%;
+}
+.leftside{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: var(--primary-color);
+  color: var(--text-primary);
+  font-size: 2rem;
+}
+.unique{
+  color: var(--text-on-primary);
+}
+.rightside{
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+  background-color: var(--primary-color);
+   width: 48%;
+}
+.switch{
+  margin-top: 20px;
+  color: var(--primary-color);
+  font-size: 1.5rem;
 }
