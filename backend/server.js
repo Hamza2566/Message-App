@@ -13,6 +13,10 @@ app.use(express.json())
 
 app.use("/api/auth",authrouter)
 
+app.get("/",(req,res)=>{
+    res.json({message:"Hi from Backend"})
+})
+
 
 
 
