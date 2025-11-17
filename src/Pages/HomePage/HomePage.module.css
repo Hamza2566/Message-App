@@ -1,0 +1,38 @@
+.container {
+  display: flex;
+  height: 100vh;
+  background: var(--background);
+}
+
+.left {
+  flex: 1;
+  background: var(--primary);
+  color: white;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.right {
+  flex: 1;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.logo {
+  font-size: 40px;
+  font-weight: bold;
+}
+
+.subtitle {
+  margin-top: 20px;
+  font-size: 18px;
+  opacity: 0.9;
+}
+
+.switchLinks {
+  margin-top: 20px;
+}

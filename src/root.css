@@ -66,3 +66,7 @@
   --bubble-sent: #6c5ce7;      /* Color of your messages */
   --bubble-received: #2f3640;  /* Color of messages from other people */
 }
+*{
+   margin: 0;
+   padding: 0;
+}
