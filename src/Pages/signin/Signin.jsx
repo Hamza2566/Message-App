@@ -1,4 +1,6 @@
+import { json } from "express"
 import style from "./signin.module.css"
+import { body } from "express-validator"
 export default function SignIn() {
 
    const handlesubmit = (e)=>{
@@ -11,6 +13,10 @@ export default function SignIn() {
       password
     }
     console.log(data);
+    const response = fetch("/api/auth",{
+      method:"POST",
+      
+    })
     
 
    }

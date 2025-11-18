@@ -18,7 +18,7 @@ export default function HomePage() {
 
         {/* Links to switch */}
         <div className={style.switch}>
-          <Link to="/">Sign In</Link> | <Link to="/signup">Sign Up</Link>
+          <Link to="/" className={style.link}>Sign In</Link> | <Link to="/signup"   className={style.link}>Sign Up</Link>
         </div>
       </div>
     </div>
