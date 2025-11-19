@@ -1,20 +1,17 @@
 import React from "react";
 
-import { useState } from "react"
 import style from "./signin.module.css"
 export default function SignIn() {
-  const [data,setdata] = useState({})
 
    const handlesubmit = (e)=>{
     e.preventDefault()
     const username =  e.target.username.value
     const password = e.target.password.value
+  const userData = { username, password };
 
-      setdata({
-        username,
-        password
-      })
-      response(data)
+  console.log("Sending:", userData);
+
+  response(userData);  
    }   
    function response(data) {
     fetch("http://localhost:3500/api/auth/signin",{

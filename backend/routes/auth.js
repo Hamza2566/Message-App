@@ -9,7 +9,7 @@ const authrouter = express.Router()
 
 
 authrouter.post("/signup",signup)
-authrouter.post("/signin",userValidation,signin)
+authrouter.post("/signin",signin)
 
 
 

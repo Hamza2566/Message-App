@@ -1,4 +1,5 @@
-import { validationResult } from "express-validator";
+
+import { getUserByName } from "../helpers/quires.js";
 
 
 
@@ -8,14 +9,14 @@ export function signup(req,res) {
 
 
 
-export function  signin(req,res) {
-     const errors = validationResult(req);
-     console.log(errors.array);
-//     if (!errors.isEmpty()) {
-//         return res.status(400).json({
-//             success: false,
-//             errors: errors.array(),
-//         });
-//     }
-     res.json({ message: "HI from signin controller" })
+export  async function  signin(req,res) {
+     console.log(req.body);
+   const username =  req.body.username
+   const password = req.body.password
+
+   if (!username || !password) {return res.json({message:"Invalid Credentails"})}
+   
+   const user =  await getUserByName(username)
+
+   console.log("user was found ",user , user.password) 
 }
