@@ -1,5 +1,6 @@
 import express from "express"
-import { signup } from "../controllers/auth.controller.js"
+import { signin, signup } from "../controllers/auth.controller.js"
+import userValidation from "../helpers/validator.js"
 
 
 
@@ -8,6 +9,8 @@ const authrouter = express.Router()
 
 
 authrouter.post("/signup",signup)
+authrouter.post("/signin",userValidation,signin)
+
 
 
 

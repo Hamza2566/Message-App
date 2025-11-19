@@ -1,3 +1,4 @@
+import React from "react";
 import { Outlet, Link } from 'react-router-dom';
 import  style from'./HomePage.module.css'; 
 
@@ -7,11 +8,10 @@ export default function HomePage() {
       {/* LEFT SIDE */}
       <div  className={style.leftside}>
         <h1>Chatterly</h1>
-        <img src="./message.png" alt="" className={style.img} />
+        <img src="././message.png" alt="" className={style.img} />
         <p>Connect with friends instantly and chat in <span className={style.unique}>Chatterly.</span></p>
       </div>
-
-      {/* RIGHT SIDE */}
+       {/* RIGHT SIDE */}
       <div  className={style.rightside}>
         {/* Child routes render here */}
         <Outlet />
@@ -20,7 +20,9 @@ export default function HomePage() {
         <div className={style.switch}>
           <Link to="/" className={style.link}>Sign In</Link> | <Link to="/signup"   className={style.link}>Sign Up</Link>
         </div>
-      </div>
+
+     </div>
     </div>
+
   );
 }

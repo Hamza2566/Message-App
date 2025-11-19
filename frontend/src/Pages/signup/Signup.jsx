@@ -1,3 +1,5 @@
+import React from "react";
+
 import style from "./signup.module.css"
 export default function SignUp() {
    const handlesubmit = (e)=>{

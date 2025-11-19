@@ -1,25 +1,34 @@
-import { json } from "express"
+import React from "react";
+
+import { useState } from "react"
 import style from "./signin.module.css"
-import { body } from "express-validator"
 export default function SignIn() {
+  const [data,setdata] = useState({})
 
    const handlesubmit = (e)=>{
     e.preventDefault()
     const username =  e.target.username.value
     const password = e.target.password.value
 
-    const data = {
-      username,
-      password
-    }
-    console.log(data);
-    const response = fetch("/api/auth",{
-      method:"POST",
-      
-    })
-    
-
+      setdata({
+        username,
+        password
+      })
+      response(data)
+   }   
+   function response(data) {
+    fetch("http://localhost:3500/api/auth/signin",{
+    method: "POST",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(data)
+   })
+   .then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
    }
+
   return (
     <div className={style.SignIn}>
       <h2>Sign In</h2>
