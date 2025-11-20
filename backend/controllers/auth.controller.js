@@ -1,13 +1,29 @@
+import { createUser, getUserByName, Lookusername } from "../helpers/quires.js";
+import { generateAccessToken, generateRefreshToken } from "../jwt/jwt.js";
+import bcrypt from "bcryptjs"
 
-import { getUserByName } from "../helpers/quires.js";
 
 
+export async function signup(req,res) {
+     const username =  req.body.username
+     const email = req.body.email
+     const password = req.body.password
+        if (!username || !email || !password) { return res.json("Invalid Credentails")}
 
-export function signup(req,res) {
-     res.json({ message: "HI from signup controller" })
+   
+    
+   
+   const isTaken = await Lookusername(username)
+   console.log(username);
+if (isTaken)   {return  res.json("Username is already taken");} 
+ 
+    const hashpassword = await bcrypt.hash(password,10)
+
+    const UserData = {username, email , password: hashpassword}
+
+    const AddUser = await createUser(UserData)
+    res.json(AddUser)
 }
-
-
 
 export  async function  signin(req,res) {
      console.log(req.body);
@@ -18,5 +34,20 @@ export  async function  signin(req,res) {
    
    const user =  await getUserByName(username)
 
-   console.log("user was found ",user , user.password) 
+  if (!user) {
+  return res.status(404).json({ error: "User not found" });
+  // or throw new Error("User not found");
+}
+
+ const AccessToken = generateAccessToken(user)
+ const RefreshTOken = generateRefreshToken(user)
+
+ 
+
+   console.log({
+     "user was found ":user , 
+     "Token": AccessToken,
+     "RefreshTOken" : RefreshTOken,
+   }) 
+
 }

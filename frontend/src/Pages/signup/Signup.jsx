@@ -8,14 +8,23 @@ export default function SignUp() {
     const email =  e.target.email.value
     const password = e.target.password.value
 
-    const data = {
-      username,
-      email,
-      password
-    }
-    console.log(data);
-    
+    const data = { username,email,password}
+
+     response(data)
    }
+    function response(data) {
+    fetch("http://localhost:3500/api/auth/signup",{
+    method: "POST",
+    headers:{
+      'Content-Type':'application/json'
+    },
+    body:JSON.stringify(data)
+   })
+   .then(response => response.json())
+.then(data => console.log(data))
+.catch(error => console.error('Error:', error));
+   }
+
   return (
     <div className={style.SignUp}>
       <h2>Sign Up</h2>
