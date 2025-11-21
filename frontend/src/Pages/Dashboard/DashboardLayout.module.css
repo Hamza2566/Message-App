@@ -1,0 +1,30 @@
+.DashboardWrapper {
+    display: flex;
+    flex-direction: column;
+    height: 100vh; 
+}
+
+.Navbardiv {
+    height: 70px;              
+    flex-shrink: 0;           
+}
+
+.Messagediv {
+    display: flex;
+    flex: 1;                  
+    overflow: hidden;         
+}
+
+.UserSidebar {
+    width: 250px;
+    background-color: var(--sidebar-bg);
+    padding: 20px;
+
+}
+
+.Chatwindow {
+    flex: 1;
+    padding: 20px;
+    background-color: var(--background-dark);
+    overflow-y: auto;        
+}

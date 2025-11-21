@@ -1,0 +1,26 @@
+.NavbarWrapper{
+    display: flex;
+    justify-content: space-between;
+    padding: 0px 5% 0px 40px;
+   height: inherit;
+   align-items: center;
+      background-color: var(--primary-color);
+  color: var(--text-on-primary);
+  border-bottom: 1px solid var(--header-border);
+
+}
+.NavbarImg{
+}
+.Link {
+    display: flex;
+    align-items: center;
+    font-size: 1.5rem;
+    text-decoration: none;
+    color: var(--text-primary);
+}
+.NavbarImg img{
+    width: 7%;
+}
+.NavbarSign{
+
+}

@@ -1,11 +1,20 @@
 import React from 'react';
 import { Outlet } from 'react-router-dom';
+import Navbar from '../../components/Navbar/Navbar';
+import style from "./DashboardLayout.module.css"
 
 export default function DashboardLayout() {
   return (
-    <div style={{ display: 'flex', height: '100vh' }}>
+    <div className={style.DashboardWrapper}>
+    <div className={style.Navbardiv}>
+      {/* the navbar */}
+       <Navbar/>
+
+    </div>
+    <div className={style.Messagediv}>
+
       {/* Sidebar */}
-      <div style={{ width: 250, background: '#f0f0f0', padding: 20 }}>
+      <div className={style.UserSidebar}>
         <h3>Friends List</h3>
         <ul>
           <li>Friend 1</li>
@@ -14,9 +23,10 @@ export default function DashboardLayout() {
       </div>
 
       {/* Main content */}
-      <div style={{ flex: 1, padding: 20 }}>
+      <div className={style.Chatwindow}>
         <Outlet /> {/* DashboardHome or ChatWindow */}
       </div>
+    </div>
     </div>
   );
 }

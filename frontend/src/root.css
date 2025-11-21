@@ -1,43 +1,46 @@
 /* ===================== 🧊 CYBER ICE THEME ===================== */
 :root {
-  /* 🌈 MAIN COLORS — Cold tech colors */
-  --primary-color: #4f46e5;        /* Indigo: buttons + your messages */
-  --secondary-color: #38bdf8;      /* Ice blue: highlights */
-  --accent-color: #a3f3ff;         /* Light neon blue: online or success */
 
-  /* 🖼 BACKGROUNDS — Ice + metal */
-  --background-light: #f0f9ff;     /* Very light ice blue */
-  --background-dark: #111827;      /* Dark blue steel */
-  --chat-bubble-incoming: #dbeafe; /* Soft ice blue */
-  --chat-bubble-outgoing: #4f46e5; /* Indigo bubble */
+  /* 🌈 MAIN BRAND COLORS — Used for buttons, highlights, and main accents */
+  --primary-color: #4f46e5;        /* Main brand color (buttons, outgoing messages, navbar if colored) */
+  --secondary-color: #38bdf8;      /* Highlight color (links, icons, borders) */
+  --accent-color: #a3f3ff;         /* Neon accent (online dot, glow effects) */
 
-  /* ✏️ TEXT COLORS */
-  --text-primary: #0f172a;         /* Dark navy */
-  --text-secondary: #64748b;       /* Gray/blue text */
-  --text-on-primary: #ffffff;      /* White text inside indigo */
+  /* 🪟 GLOBAL BACKGROUNDS — Use for full-page or container backgrounds */
+  --background-light: #f0f9ff;     /* Light page background */
+  --background-dark: #111827;      /* Dark sections (chat window, dark mode) */
 
-  /* 🟠 SHAPES & SHADOWS */
-  --border-radius: 12px;
-  --shadow-light: 0 2px 10px rgba(79, 70, 229, 0.2);
-  --shadow-dark: 0 2px 10px rgba(0,0,0,0.4);
+  /* 💬 CHAT BUBBLES — For messaging UI */
+  --chat-bubble-incoming: #dbeafe; /* Other user's bubble */
+  --chat-bubble-outgoing: #4f46e5; /* Your bubble (primary color) */
 
-  /* ⚡ ANIMATION SPEED */
+  /* ✏️ TEXT COLORS — Use across UI */
+  --text-primary: #0f172a;         /* Main text (navbar, sidebar, content) */
+  --text-secondary: #64748b;       /* Subtext (timestamps, muted labels) */
+  --text-on-primary: #ffffff;      /* Text on colored backgrounds (buttons, outgoing bubble) */
+
+  /* 🟠 SHAPES & SHADOWS — UI depth and rounding */
+  --border-radius: 12px;           /* Buttons, cards, bubbles */
+  --shadow-light: 0 2px 10px rgba(79, 70, 229, 0.2); /* Soft highlight shadow */
+  --shadow-dark: 0 2px 10px rgba(0,0,0,0.4);         /* Deep panel shadow */
+
+  /* ⚡ ANIMATION SPEED — Transitions for hovers & interactions */
   --transition-speed: 0.3s;
 
-  /* 🎧 STATUS COLORS */
-  --online-color: #a3f3ff;         /* Neon cyan */
-  --away-color: #facc15;           /* Yellow */
-  --busy-color: #ef4444;           /* Red */
+  /* 🎧 USER STATUS COLORS — Sidebar friend list or profile indicators */
+  --online-color: #a3f3ff;         /* Online (cyan glow) */
+  --away-color: #facc15;           /* Away (yellow) */
+  --busy-color: #ef4444;           /* Busy (red) */
 
-  /* 📱 UI COLORS */
-  --button-hover: #4338ca;         /* Darker indigo */
-  --input-bg: #e2e8f0;             /* Light gray */
-  --icon-color: #94a3b8;           /* Steel gray */
+  /* 📱 FORM & ICON COLORS — Inputs, icons, small UI controls */
+  --button-hover: #4338ca;         /* Hover state for primary buttons */
+  --input-bg: #e2e8f0;             /* Background for inputs, search bars */
+  --icon-color: #94a3b8;           /* Icon tint (sidebar, navbar, actions) */
 
-  /* 🪟 SIDEBAR & HEADER */
-  --sidebar-bg: #e0f2fe;
-  --header-bg: #ffffff;
-  --header-border: #cbd5e1;
+  /* 🪟 SIDEBAR & HEADER — EXACTLY what you asked for */
+  --sidebar-bg: #e0f2fe;           /* Sidebar background (friends list) */
+  --header-bg: #ffffff;            /* Navbar background (top navigation bar) */
+  --header-border: #cbd5e1;        /* Navbar bottom border (divider line) */
 }
 
 
