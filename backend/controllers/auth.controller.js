@@ -33,21 +33,35 @@ export  async function  signin(req,res) {
    if (!username || !password) {return res.json({message:"Invalid Credentails"})}
    
    const user =  await getUserByName(username)
+   
+   if (!user) {
+   return res.status(404).json({ error: "User not found" });
+   // or throw new Error("User not found");
+ }
 
-  if (!user) {
-  return res.status(404).json({ error: "User not found" });
-  // or throw new Error("User not found");
-}
+   const match =  await bcrypt.compare(password,user.password)
+
+   if (!match) {return res.status(404).json({ message: "Wrong Password" });} 
+
+   
+   
+
 
  const AccessToken = generateAccessToken(user)
  const RefreshTOken = generateRefreshToken(user)
 
  
-
-   console.log({
-     "user was found ":user , 
-     "Token": AccessToken,
-     "RefreshTOken" : RefreshTOken,
-   }) 
+   console.log("refreshtoken", RefreshTOken);
+ res.cookie("refreshToken", RefreshTOken, {
+   httpOnly: true,
+   secure: false,       // HTTPS only if secure: true
+   sameSite: "lax",
+   path: "/",
+   maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
+  });
+  res.json({
+    "user was found ":{id: user.id, username: user.username } , 
+    "Token": AccessToken,
+  }) 
 
 }

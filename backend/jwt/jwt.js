@@ -12,7 +12,7 @@ export function generateAccessToken(user) {
 };
 
 
-   const AccessToken = jwt.sign(payload,process.env.JWT_SECRET)
+   const AccessToken = jwt.sign(payload,process.env.JWT_SECRET, { expiresIn: "15m" })
    
    return AccessToken
 }
@@ -21,7 +21,7 @@ export function generateRefreshToken(user) {
   userId: user.id, 
   email: user.email,
 };
-const RefreshTOken = jwt.sign(payload,process.env.REFRESH_JWT_SECRET)
+const RefreshTOken = jwt.sign(payload,process.env.REFRESH_JWT_SECRET,{ expiresIn: "7d" })
 return RefreshTOken
     
 }

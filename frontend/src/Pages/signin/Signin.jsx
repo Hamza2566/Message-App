@@ -1,7 +1,9 @@
 import React from "react";
 
 import style from "./signin.module.css"
+import { useNavigate } from "react-router";
 export default function SignIn() {
+  const navigate = useNavigate();
 
    const handlesubmit = (e)=>{
     e.preventDefault()
@@ -13,19 +15,37 @@ export default function SignIn() {
 
   response(userData);  
    }   
-   function response(data) {
-    fetch("http://localhost:3500/api/auth/signin",{
-    method: "POST",
-    headers:{
-      'Content-Type':'application/json'
-    },
-    body:JSON.stringify(data)
-   })
-   .then(response => response.json())
-.then(data => console.log(data))
-.catch(error => console.error('Error:', error));
-   }
+  async function response(data) {
+  try {
+    const res = await fetch("http://localhost:3500/api/auth/signin", {
+      method: "POST",
+      credentials: "include",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(data),
+    });
 
+    const result = await res.json(); // 👈 get JSON from backend
+
+    if (result.Token) {
+      console.log("Login Success:", result);
+
+      // Save token
+      localStorage.setItem("token", result.Token);
+
+      // Navigate to dashboard
+      navigate("/dashboard");
+    } else {
+      console.log("Wrong credentials");
+    }
+  } catch (err) {
+    console.error("Login error:", err);
+  }
+}
+
+
+   
   return (
     <div className={style.SignIn}>
       <h2>Sign In</h2>

@@ -1,6 +1,5 @@
 import express from "express"
 import { signin, signup } from "../controllers/auth.controller.js"
-import userValidation from "../helpers/validator.js"
 
 
 
