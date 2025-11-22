@@ -28,3 +28,11 @@
     background-color: var(--background-dark);
     overflow-y: auto;        
 }
+.FriendSearch{
+    display: flex;
+    justify-content: space-between;
+    font-size: 2rem;
+}
+.FriendSearch img{
+    width: 40px;
+}

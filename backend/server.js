@@ -5,6 +5,7 @@ const port = process.env.PORT || 3500
 import cors from "cors"
 import cookieParser from "cookie-parser";
 import refreshroute from "./routes/refresh.js"
+import users from "./routes/users.js"
 
 
 dotenv.config()
@@ -24,6 +25,7 @@ app.use(express.urlencoded({ extended: true }));
 
 app.use("/api/auth",authrouter)
 app.use("/api/auth",refreshroute)
+app.use("/api/users",users)
 
 app.get("/",(req,res)=>{
     res.json({message:"Hi from Backend"})

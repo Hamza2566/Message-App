@@ -48,4 +48,28 @@ export async function createUser(UserData) {
   }
 }
     
-    
+const getFriends = async (userId) => {
+  return await prisma.friendRequest.findMany({
+    where: {
+      status: "accepted",
+      OR: [
+        { senderId: userId },
+        { receiverId: userId }
+      ]
+    },
+    include: {
+      sender: true,
+      receiver: true
+    }
+  });
+};
+export const getUsers = async (req,res) => {
+  try {
+    const users = await prisma.user.findMany();    
+   return res.json(users)    
+
+  } catch (error) {
+    console.error("Error fetching users:", error);
+    throw error;
+  }
+};

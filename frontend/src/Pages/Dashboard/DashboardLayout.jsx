@@ -3,7 +3,11 @@ import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import style from "./DashboardLayout.module.css"
 
+
 export default function DashboardLayout() {
+  const handlesearch = ()=>{
+
+  }
   return (
     <div className={style.DashboardWrapper}>
     <div className={style.Navbardiv}>
@@ -15,7 +19,8 @@ export default function DashboardLayout() {
 
       {/* Sidebar */}
       <div className={style.UserSidebar}>
-        <h3>Friends List</h3>
+        
+        <h3 className={style.FriendSearch}>Friends   </h3>
         <ul>
           <li>Friend 1</li>
           <li>Friend 2</li>

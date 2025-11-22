@@ -10,6 +10,8 @@
 
 }
 .NavbarImg{
+    width: 20%;
+    display: flex;
 }
 .Link {
     display: flex;
@@ -19,8 +21,11 @@
     color: var(--text-primary);
 }
 .NavbarImg img{
-    width: 7%;
+    width: 15%;
 }
 .NavbarSign{
 
+}
+.FriendRequest{
+    cursor: pointer;
 }
