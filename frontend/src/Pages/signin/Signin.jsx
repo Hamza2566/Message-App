@@ -2,8 +2,12 @@ import React from "react";
 
 import style from "./signin.module.css"
 import { useNavigate } from "react-router";
+import { UserContext } from "../../context/Usercontxt.jsx";
+import { useContext } from "react";
 export default function SignIn() {
   const navigate = useNavigate();
+  const {User , setUser}= useContext(UserContext)
+
 
    const handlesubmit = (e)=>{
     e.preventDefault()
@@ -27,6 +31,9 @@ export default function SignIn() {
     });
 
     const result = await res.json(); // 👈 get JSON from backend
+    if (result) {
+      localStorage.setItem("user",result.user.username)
+    }
 
     if (result.Token) {
       console.log("Login Success:", result);

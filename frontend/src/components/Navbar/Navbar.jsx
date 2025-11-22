@@ -19,7 +19,7 @@ function Navbar() {
         </Link>
       </div>
       <div>
-        { FriendRequest && <Request />}
+        { FriendRequest && <Request onClose={()=> setfriendrequest(false)} />}
       </div>
       <div className={style.FriendRequest} onClick={handleFriendRequest}>
         <h3>Friend Requests</h3>

@@ -60,7 +60,7 @@ export  async function  signin(req,res) {
    maxAge: 7 * 24 * 60 * 60 * 1000, // 7 days
   });
   res.json({
-    "user was found ":{id: user.id, username: user.username } , 
+    "user":{id: user.id, username: user.username } , 
     "Token": AccessToken,
   }) 
 

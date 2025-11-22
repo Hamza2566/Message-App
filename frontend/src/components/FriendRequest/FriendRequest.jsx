@@ -1,10 +1,15 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import styles from "./friendRequest.module.css";
+import { UserContext } from "../../context/Usercontxt";
+import { useContext } from "react";
 
 export default function Request({ onClose }) {
   const [users, setUsers] = useState([]);
   const [search, setSearch] = useState("");
+  const { user } = useContext(UserContext);
+  const currentUserId = user?.currentUserId;
+
 
   useEffect(() => {
     const fetchUsers = async () => {
@@ -21,8 +26,9 @@ export default function Request({ onClose }) {
 
   const handleAddFriend = async (id) => {
     try {
-      await fetch(`/api/friend-request/${id}`, {
+      await fetch(`http://localhost:3500/api/friend-request/${id}`, {
         method: "POST",
+        credentials:"include"
       });
       alert("Friend request sent!");
     } catch (error) {
@@ -31,7 +37,6 @@ export default function Request({ onClose }) {
   };
 
 
- console.log(users);
  
   
 
@@ -49,7 +54,9 @@ export default function Request({ onClose }) {
         />
 
         <div className={styles.list}>
-          {users.map((user) => (
+          {users.
+          filter((user) => user.id !== currentUserId)
+          .map((user) => (
             <div key={user.id} className={styles.userCard}>
               <span>{user.username}</span>
               <button

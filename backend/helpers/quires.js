@@ -73,3 +73,9 @@ export const getUsers = async (req,res) => {
     throw error;
   }
 };
+
+export const addfriend = async (req,res) =>{
+    const id = req.params.id; // get the user ID from the URL
+  console.log("Friend request for user:", id);
+  // handle friend request logic here
+}
