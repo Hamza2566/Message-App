@@ -1,6 +1,7 @@
 import { createUser, getUserByName, Lookusername } from "../helpers/quires.js";
 import { generateAccessToken, generateRefreshToken } from "../jwt/jwt.js";
 import bcrypt from "bcryptjs"
+import jwt from "jsonwebtoken"
 
 
 
@@ -65,3 +66,30 @@ export  async function  signin(req,res) {
   }) 
 
 }
+export const verifyToken = (req, res, next) => {
+
+    const authHeader = req.headers.authorization;
+    console.log(authHeader);
+    
+    
+
+    if (!authHeader || !authHeader.startsWith("Bearer ")) {
+        return res.status(401).json({ message: "No token provided" });
+    }
+
+    const token = authHeader.split(" ")[1];
+    console.log(token);
+
+
+    
+
+    try {
+        const decoded = jwt.verify(token, process.env.JWT_SECRET);
+        console.log("decoded" , decoded);
+        
+        req.user = decoded;     // 👈 store decoded data here
+        next();
+    } catch (error) {
+        res.status(403).json({ message: "Invalid token" });
+    }
+};

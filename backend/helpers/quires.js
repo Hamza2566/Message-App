@@ -74,8 +74,61 @@ export const getUsers = async (req,res) => {
   }
 };
 
-export const addfriend = async (req,res) =>{
-    const id = req.params.id; // get the user ID from the URL
-  console.log("Friend request for user:", id);
-  // handle friend request logic here
+export const sendFriendRequest = async (req,res) =>{
+     const receiverId = Number(req.params.id) ; // the user I want to add
+    const senderId = req.user.userId;       // 👈 CURRENT USER ID from token
+
+    console.log("Current user:", senderId);
+    console.log("Friend to add:", receiverId);
+
+
+    try {
+        // check if a request already exists
+        const existing = await prisma.friendRequest.findFirst({
+            where: {
+                senderId,
+                receiverId,
+                status: "pending"
+            }
+        });
+
+        if (existing) {
+            return res.status(400).json({ message: "Request already sent" });
+        }
+
+        const request = await prisma.friendRequest.create({
+            data: {
+                senderId,
+                receiverId,
+            }
+        });
+
+        res.json(request);
+
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Something went wrong" });
+    }
 }
+export const getIncomingRequests = async (req, res) => {
+    const userId = req.user.userId;
+    console.log(userId);
+    
+
+    try {
+        const incoming = await prisma.friendRequest.findMany({
+            where: {
+                receiverId: userId,
+                status: "pending"
+            },
+            include: {
+                sender: true
+            }
+        });
+
+        res.json(incoming);
+    } catch (err) {
+        console.log(err);
+        res.status(500).json({ message: "Could not load requests" });
+    }
+};

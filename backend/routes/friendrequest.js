@@ -1,12 +1,14 @@
-import { authrefreshToken } from "../controllers/refresh.controller.js"
+
 import express from "express"
-import { addfriend } from "../helpers/quires.js"
+import { getIncomingRequests, sendFriendRequest } from "../helpers/quires.js"
+import { verifyToken } from "../controllers/auth.controller.js"
 
 const friendrequest = express.Router()
 
 
 
-friendrequest.post("/:id",addfriend)
+friendrequest.post("/:id",verifyToken ,sendFriendRequest)
+friendrequest.get("/",verifyToken,getIncomingRequests)
 
 
 
