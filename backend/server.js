@@ -7,6 +7,7 @@ import cookieParser from "cookie-parser";
 import refreshroute from "./routes/refresh.js"
 import users from "./routes/users.js"
 import friendrequest from "./routes/friendrequest.js"
+import friendAccept from "./routes/friendaccept.js"
 
 
 dotenv.config()
@@ -28,6 +29,7 @@ app.use("/api/auth",authrouter)
 app.use("/api/auth",refreshroute)
 app.use("/api/users",users)
 app.use("/api/friend-request",friendrequest)
+app.use("/api/friend-accept",friendAccept)
 
 
 

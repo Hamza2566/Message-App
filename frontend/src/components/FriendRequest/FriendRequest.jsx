@@ -34,7 +34,8 @@ const currentUserId = localStorage.getItem("user")
         });
         const incoming  = await res.json();
         console.log(incoming);
-        setincoming(incoming[1].sender)
+        
+        setincoming(incoming)
         
       } catch (error) {
         console.error("error for fetching incoming requests");
@@ -62,9 +63,28 @@ const currentUserId = localStorage.getItem("user")
       console.error("Error sending request", error);
     }
   };
-  const AcceptBtn = ()=>{
-    log
+const AcceptBtn = async (id) => {
+  console.log(id);
+  
+  try {
+    const res = await fetch(`http://localhost:3500/api/friend-accept/${id}`, {
+      method: "PUT",
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+      },
+      credentials: "include",
+      body: JSON.stringify({ id })
+    });
+
+    // const text = await res.text();   // Read raw text from server
+    // console.log("Server response:", text);
+
+  } catch (error) {
+    console.error("Error sending request", error);
   }
+};
+
 
 
 
@@ -77,22 +97,18 @@ const currentUserId = localStorage.getItem("user")
       <div className={styles.wrapper}>
         <button className={styles.closeBtn} onClick={onClose}>×</button>
 
-        <input
-          type="text"
-          placeholder="Search users..."
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-          className={styles.search}
-        />
+       
         <div className={styles.incoming}>
+          <h3>Friend Request</h3>
           {incoming?.length > 0 ? (
-         incoming.filter(req = > req.senderId !== currentUserId).map((request) => (
+         incoming.map((request) => (
     <div key={request.id} className={styles.requestCard}>
-      <span>{request.username}</span>
+      
+      <span>{request.sender.username}</span>
 
       <button
         className={styles.AcceptBtn}
-        onClick={() => AcceptBtn(request.id)}
+        onClick={() => AcceptBtn(request.sender.id)}
       >
         Accept Request
       </button>
@@ -107,6 +123,7 @@ const currentUserId = localStorage.getItem("user")
         </div>
 
         <div className={styles.list}>
+          <h2>Friends Recommend</h2>
           {users.
           filter((user) => user.username !== currentUserId)
           .map((user) => (

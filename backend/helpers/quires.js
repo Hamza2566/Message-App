@@ -131,4 +131,19 @@ export const getIncomingRequests = async (req, res) => {
         console.log(err);
         res.status(500).json({ message: "Could not load requests" });
     }
-};
+}; 
+
+
+
+
+ export const addFriend = async (req,res) => {
+ 
+  
+  
+
+  
+  const friendtoadd = Number(req.params.id)
+    const senderId = req.user.userId;       // 👈 CURRENT USER ID from token
+     console.log("Current user:", senderId);
+    console.log("Friend to add:", friendtoadd);
+}

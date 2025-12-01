@@ -67,9 +67,11 @@ export  async function  signin(req,res) {
 
 }
 export const verifyToken = (req, res, next) => {
+ 
+
 
     const authHeader = req.headers.authorization;
-    console.log(authHeader);
+    // console.log(authHeader);
     
     
 
@@ -78,16 +80,16 @@ export const verifyToken = (req, res, next) => {
     }
 
     const token = authHeader.split(" ")[1];
-    console.log(token);
 
 
     
 
     try {
         const decoded = jwt.verify(token, process.env.JWT_SECRET);
-        console.log("decoded" , decoded);
+        
         
         req.user = decoded;     // 👈 store decoded data here
+        
         next();
     } catch (error) {
         res.status(403).json({ message: "Invalid token" });

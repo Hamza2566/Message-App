@@ -60,4 +60,29 @@
 }
 .incoming{
   color:black;  
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  border: 2px solid black;
+  gap: 20px;
+}
+.requestCard{
+   border-radius: 8px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  display: flex;
+  justify-content: space-between;
+  margin: 0px 2% 0px 2%;
+}
+.requestCard span{
+  font-size: 2rem;
+}
+.AcceptBtn{
+   padding: 0.4rem 0.8rem;
+  border: none;
+  background: #4f46e5;
+  color: white;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s;
 }
