@@ -18,9 +18,35 @@
 .UserSidebar {
     width: 250px;
     background-color: var(--sidebar-bg);
-    padding: 20px;
     color: black;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+.UserSidebar h3{
+    padding: 10px;
+    font-size: 1.5rem;
+    border-bottom: 2px solid black;
+    
 
+
+}
+.UserButton{
+    border: 1px solid (--header-bg);
+    width: 100%;
+    height: 10ch;
+    cursor: pointer;
+    background-color: var(--sidebar-bg);
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+}
+.UserButton >*{
+    flex: 1;
+    padding: 10px;
+}
+.usernames{
+    font-size: large;
 }
 
 .Chatwindow {

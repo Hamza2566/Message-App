@@ -48,9 +48,14 @@ export default function DashboardLayout() {
      <button
       key={user.id}
       onClick={() => setActiveChatUser(user)}
-      className={style.UserButton} // optional styling
+      className={style.UserButton} 
     >
+      <div className={style.usernames}>
       {user.username}
+      </div>
+      <div className={style.usermessage}>
+        message: you what am i doing here
+      </div>
     </button>
   ))}
           
