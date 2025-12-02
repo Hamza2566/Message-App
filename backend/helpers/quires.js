@@ -48,24 +48,89 @@ export async function createUser(UserData) {
   }
 }
     
-const getFriends = async (userId) => {
-  return await prisma.friendRequest.findMany({
-    where: {
-      status: "accepted",
-      OR: [
-        { senderId: userId },
-        { receiverId: userId }
-      ]
-    },
-    include: {
-      sender: true,
-      receiver: true
-    }
-  });
-};
-export const getUsers = async (req,res) => {
+export const getFriends = async (req,res) => {
+  const myid = req.user.userId
   try {
-    const users = await prisma.user.findMany();    
+     const users =  await prisma.friendRequest.findMany({
+       where: {
+    status: "accepted",
+    OR: [
+      { senderId: myid },
+      { receiverId: myid }
+    ]
+  },
+  include: {
+  sender: true,
+  receiver: true
+}
+
+  });
+  const friends = users.map(fr => {
+  if (fr.senderId === myid) return fr.receiver;
+
+  return fr.sender;
+});
+
+console.log(friends);
+
+ 
+  return res.json(friends)
+  
+  } catch (error) {
+    console.log(error);
+    return res.json({ message: "error fetching Users"})
+  }
+ 
+};
+
+export const getUsers = async (req,res) => {
+  const myid   = req.id.userId
+  
+  try {
+    const users = await prisma.user.findMany({
+      where:{
+        id:{not:myid},
+        AND:[
+          {
+            sentRequests:{
+              none:{
+                receiverId:myid
+              }
+            }
+          },
+          {
+            receivedRequests:{
+              none:{
+                senderId:myid
+              }
+            }
+          },
+          {
+            OR: [
+          {
+            SentRequests: {
+              none: {
+                receiverId: myid,
+                status: "accepted"
+              }
+            }
+          },
+          {
+            ReceivedRequests: {
+              none: {
+                senderId: myid,
+                status: "accepted"
+              }
+            }
+          }
+        ]
+          }
+        ]
+
+    }
+      
+
+    });    
    return res.json(users)    
 
   } catch (error) {
@@ -138,12 +203,50 @@ export const getIncomingRequests = async (req, res) => {
 
  export const addFriend = async (req,res) => {
  
+  const senderId = Number(req.params.id)
+  // console.log(req.params);
+  // console.log(req.user);
   
   
-
-  
-  const friendtoadd = Number(req.params.id)
-    const senderId = req.user.userId;       // 👈 CURRENT USER ID from token
+    const receiverId = req.user.userId;       // 👈 CURRENT USER ID from token
      console.log("Current user:", senderId);
-    console.log("Friend to add:", friendtoadd);
+    console.log("Friend to add:", receiverId);
+
+
+
+    try {
+       const existing = await prisma.friendRequest.findFirst({
+            where: {
+                senderId,
+                receiverId,
+                status: "pending"
+            }
+        });
+        if (!existing) throw new Error("No friend request found");
+        console.log(existing);
+//         senderId   | 8
+// receiverId | 9
+// status     | pending
+        
+       const addfriend = await prisma.friendRequest.update({
+        where:{id:existing.id},
+        data:{status:"accepted"}
+       })
+
+       console.log(addfriend);
+       
+       
+
+      
+    } catch (error) {
+       console.log(error);
+        res.status(500).json({ message: "Something went wrong when adding the friend" });
+      
+    }
+
+
+
+
+
 }
+

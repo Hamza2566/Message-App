@@ -8,6 +8,7 @@ import refreshroute from "./routes/refresh.js"
 import users from "./routes/users.js"
 import friendrequest from "./routes/friendrequest.js"
 import friendAccept from "./routes/friendaccept.js"
+import friends from "./routes/friends.js"
 
 
 dotenv.config()
@@ -28,6 +29,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use("/api/auth",authrouter)
 app.use("/api/auth",refreshroute)
 app.use("/api/users",users)
+app.use("/api/friends",friends)
 app.use("/api/friend-request",friendrequest)
 app.use("/api/friend-accept",friendAccept)
 

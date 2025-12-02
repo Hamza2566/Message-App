@@ -1,13 +1,37 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Outlet } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import style from "./DashboardLayout.module.css"
 
 
 export default function DashboardLayout() {
-  const handlesearch = ()=>{
+  const [users,setUsers] = useState()
 
-  }
+  useEffect(()=>{
+    const fetchfriend = async () =>{
+    try {
+    const token = localStorage.getItem("token")
+      const res =  await fetch("http://localhost:3500/api/friends",{
+         method :"GET",
+           headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+        },
+        credentials:"include",
+      })
+      const result = await res.json()
+      console.log(result);
+      setUsers(result)
+    
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  
+    fetchfriend()
+
+  },[])
+  
   return (
     <div className={style.DashboardWrapper}>
     <div className={style.Navbardiv}>
@@ -19,12 +43,18 @@ export default function DashboardLayout() {
 
       {/* Sidebar */}
       <div className={style.UserSidebar}>
-        
-        <h3 className={style.FriendSearch}>Friends   </h3>
-        <ul>
-          <li>Friend 1</li>
-          <li>Friend 2</li>
-        </ul>
+        <h3 >Friends   </h3>
+         {users?.map(user => (
+     <button
+      key={user.id}
+      onClick={() => setActiveChatUser(user)}
+      className={style.UserButton} // optional styling
+    >
+      {user.username}
+    </button>
+  ))}
+          
+       
       </div>
 
       {/* Main content */}

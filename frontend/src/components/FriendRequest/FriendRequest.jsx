@@ -14,7 +14,14 @@ const currentUserId = localStorage.getItem("user")
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:3500/api/users");
+        const res = await fetch("http://localhost:3500/api/users",{
+           method :"GET",
+           headers: {
+        "Content-Type": "application/json",
+        "Authorization": `Bearer ${token}`
+        },
+        credentials:"include",
+        });
         const data = await res.json();
         setUsers(data)        
       } catch (error) {
@@ -124,8 +131,7 @@ const AcceptBtn = async (id) => {
 
         <div className={styles.list}>
           <h2>Friends Recommend</h2>
-          {users.
-          filter((user) => user.username !== currentUserId)
+          {users
           .map((user) => (
             <div key={user.id} className={styles.userCard}>
               <span>{user.username}</span>
