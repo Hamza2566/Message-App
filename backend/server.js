@@ -9,6 +9,7 @@ import users from "./routes/users.js"
 import friendrequest from "./routes/friendrequest.js"
 import friendAccept from "./routes/friendaccept.js"
 import friends from "./routes/friends.js"
+import message from "./routes/message.js"
 
 
 dotenv.config()
@@ -32,6 +33,7 @@ app.use("/api/users",users)
 app.use("/api/friends",friends)
 app.use("/api/friend-request",friendrequest)
 app.use("/api/friend-accept",friendAccept)
+app.use("/api/message",message)
 
 
 

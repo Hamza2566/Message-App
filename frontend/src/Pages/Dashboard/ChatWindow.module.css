@@ -1,0 +1,15 @@
+.ChatWindowWrapper{
+    display: flex;
+    flex-direction: column;
+}
+.userheader{
+    border: 2px solid black;
+    height: 3vh;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+    align-items: center;
+
+
+}

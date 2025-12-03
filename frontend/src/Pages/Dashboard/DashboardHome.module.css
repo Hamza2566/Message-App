@@ -1,0 +1,10 @@
+.Chatwindowmessage{
+    font-size: 3rem;
+    color: firebrick;
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    margin-top: 20%;
+    background-color: burlywood;
+    
+}

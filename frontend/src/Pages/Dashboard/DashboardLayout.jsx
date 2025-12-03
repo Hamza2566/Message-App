@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Outlet, useNavigate } from 'react-router-dom';
 import Navbar from '../../components/Navbar/Navbar';
 import style from "./DashboardLayout.module.css"
 
 
 export default function DashboardLayout() {
   const [users,setUsers] = useState()
+  const navigate = useNavigate()
 
   useEffect(()=>{
     const fetchfriend = async () =>{
@@ -29,8 +30,19 @@ export default function DashboardLayout() {
   };
   
     fetchfriend()
-
   },[])
+
+  const setActiveChatUser = async (user) =>{
+    const id = user.id
+    
+    navigate(`/dashboard/chat/${id}`,{
+      state:{
+        username: user.username,
+        email: user.email
+      }
+    })
+
+  }
   
   return (
     <div className={style.DashboardWrapper}>

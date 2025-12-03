@@ -58,9 +58,7 @@
     /* background-size: cover;
     background-repeat: no-repeat;    */
 }
-.Chatwindow-message{
-    color: white;
-}
+
 .FriendSearch{
     display: flex;
     justify-content: space-between;

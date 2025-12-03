@@ -71,7 +71,6 @@ export const getFriends = async (req,res) => {
   return fr.sender;
 });
 
-console.log(friends);
 
  
   return res.json(friends)
@@ -250,3 +249,36 @@ export const getIncomingRequests = async (req, res) => {
 
 }
 
+
+ export const getmessages =  async (req,res) =>{
+    // const id  = req.params.id
+    // console.log("this is for the user id",id);
+    // console.log("this is my id",req.user.userId);
+
+    const myid = req.user.userId
+    const userid = Number(req.params.id)
+
+
+  try {
+    const getmessage = await prisma.message.findMany({
+       where: {
+        OR: [
+        
+          { senderId: myid, receiverId: userid },
+          { senderId: userid, receiverId: myid }
+        ]
+      },
+            orderBy: {
+        createdAt: "asc"
+      }
+
+    })
+    // return getmessage
+    console.log(getmessage);
+    
+  } catch (error) {
+    console.log(error);
+    
+  }
+
+}
