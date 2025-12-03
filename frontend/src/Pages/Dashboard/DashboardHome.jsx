@@ -1,9 +1,10 @@
 import React from 'react'
 
+
 function DashboardHome() {
   return (
-    <div>
-      Hello
+    <div className="Chatwindow-message">
+      Click To Friends To See Messages
     </div>
   )
 }

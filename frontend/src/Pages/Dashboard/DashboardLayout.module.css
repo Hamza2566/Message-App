@@ -17,29 +17,30 @@
 
 .UserSidebar {
     width: 250px;
-    background-color: var(--sidebar-bg);
-    color: black;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: var(--background-dark);
+    color: white;
 }
 .UserSidebar h3{
     padding: 10px;
     font-size: 1.5rem;
-    border-bottom: 2px solid black;
+    border-bottom: 2px solid white;
     
 
 
 }
 .UserButton{
     border: 1px solid (--header-bg);
+    background-color: var(--background-dark);
     width: 100%;
     height: 10ch;
     cursor: pointer;
-    background-color: var(--sidebar-bg);
     text-align: left;
     display: flex;
     flex-direction: column;
+    color: white;
 }
 .UserButton >*{
     flex: 1;
@@ -52,8 +53,13 @@
 .Chatwindow {
     flex: 1;
     padding: 20px;
-    background-color: var(--background-dark);
-    overflow-y: auto;        
+    overflow-y: auto;   
+    background-image: url(/./social-network-blue.avif);  
+    /* background-size: cover;
+    background-repeat: no-repeat;    */
+}
+.Chatwindow-message{
+    color: white;
 }
 .FriendSearch{
     display: flex;
