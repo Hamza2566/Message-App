@@ -1,9 +1,11 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useLocation, useParams } from "react-router-dom";
 import style from  "./ChatWindow.module.css"
+import Button from '../../components/button';
 
 function ChatWindow() {
   const location  = useLocation()
+  const [message,setmessage] = useState()
 
   const userData = location.state;
   const {id}  = useParams()
@@ -29,7 +31,12 @@ function ChatWindow() {
       }
     }
     fetchuser()
-  })
+  },[id])
+
+  const handlechange = (event)=>{
+     const value = event.target.value;
+     setmessage(value)
+  }
   
   
   return (
@@ -41,6 +48,11 @@ function ChatWindow() {
         </h2>
         <h3>
           {userData.email}</h3> 
+      </div>
+      <div className={style.messagewindow}></div>
+      <div className={style.messagesend}>
+        <input type="text" className={style.inputmessage} name="message" id="message" onChange={handlechange} />
+        <Button message={message}/>
       </div>
     </div>
   )
