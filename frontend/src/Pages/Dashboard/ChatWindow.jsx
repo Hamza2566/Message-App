@@ -9,12 +9,14 @@ function ChatWindow() {
 
   const userData = location.state;
   const {id}  = useParams()
+
+  
   
   useEffect(()=>{
     const fetchuser = async () =>{
       try {
          const token = localStorage.getItem("token");
-        const res = await fetch(`http://localhost:3500/api/message/${id}`,{
+        const res = await fetch(`http://localhost:9500/api/message/${id}`,{
           headers:{
              "Authorization": `Bearer ${token}`,
             "Content-Type": "application/json",
@@ -52,7 +54,7 @@ function ChatWindow() {
       <div className={style.messagewindow}></div>
       <div className={style.messagesend}>
         <input type="text" className={style.inputmessage} name="message" id="message" onChange={handlechange} />
-        <Button message={message}/>
+        <Button message={message} id={id}/>
       </div>
     </div>
   )

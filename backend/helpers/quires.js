@@ -273,7 +273,7 @@ export const getIncomingRequests = async (req, res) => {
       }
 
     })
-    // return getmessage
+    
     console.log(getmessage);
     
   } catch (error) {
@@ -281,4 +281,10 @@ export const getIncomingRequests = async (req, res) => {
     
   }
 
+}
+
+
+export const sendmessage = async (req,res) => {
+   console.log("how are we doing",req.user.userId);
+   
 }

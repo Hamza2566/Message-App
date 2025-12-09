@@ -12,7 +12,7 @@ export default function DashboardLayout() {
     const fetchfriend = async () =>{
     try {
     const token = localStorage.getItem("token")
-      const res =  await fetch("http://localhost:3500/api/friends",{
+      const res =  await fetch("http://localhost:9500/api/friends",{
          method :"GET",
            headers: {
         "Content-Type": "application/json",

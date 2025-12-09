@@ -13,7 +13,7 @@ export default function SignUp() {
      response(data)
    }
     function response(data) {
-    fetch("http://localhost:3500/api/auth/signup",{
+    fetch("http://localhost:9500/api/auth/signup",{
     method: "POST",
     headers:{
       'Content-Type':'application/json'

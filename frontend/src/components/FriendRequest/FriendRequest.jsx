@@ -14,7 +14,7 @@ const currentUserId = localStorage.getItem("user")
   useEffect(() => {
     const fetchUsers = async () => {
       try {
-        const res = await fetch("http://localhost:3500/api/users",{
+        const res = await fetch("http://localhost:9500/api/users",{
            method :"GET",
            headers: {
         "Content-Type": "application/json",
