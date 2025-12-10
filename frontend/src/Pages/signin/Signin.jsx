@@ -32,6 +32,9 @@ export default function SignIn() {
 
     const result = await res.json(); // 👈 get JSON from backend
     if (result) {
+      console.log(result);
+    localStorage.setItem("UserId",result.user.id)
+      
       localStorage.setItem("user",result.user.username)
     }
 

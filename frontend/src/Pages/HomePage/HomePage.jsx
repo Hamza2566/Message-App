@@ -1,8 +1,14 @@
 import React from "react";
 import { Outlet, Link } from 'react-router-dom';
 import  style from'./HomePage.module.css'; 
+import { socket } from "../../socket.js";
 
 export default function HomePage() {
+  useEffect(() => {
+  const myId = localStorage.getItem("UserId");
+  socket.emit("register", myId);
+}, []);
+
   return (
     <div style={{ display: 'flex', height: '100vh' }}>
       {/* LEFT SIDE */}

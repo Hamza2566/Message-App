@@ -8,15 +8,28 @@ const io = new Server(3501, {
   }
 });
 
+const users = {}; // { userId: socket.id }
+
 io.on("connection", (socket) => {
   console.log("User connected:", socket.id);
+
+  socket.on("register", (userId) => {
+    console.log(userId);
+    
+    users[userId] = socket.id;
+    console.log("User registered:", userId, socket.id);
+  });
 
   socket.on("sendMessage", (data) => {
     console.log("Received from socket:", data);
 
-    // Broadcast to all clients except sender
-    // socket.broadcast.emit("receiveMessage", data);
+    const receiverSocket = users[data.to]; // find receiver
+
+    if (receiverSocket) {
+      io.to(receiverSocket).emit("receiveMessage", data);
+    }
   });
+
 
   socket.on("disconnect", () => {
     console.log("User disconnected:", socket.id);
