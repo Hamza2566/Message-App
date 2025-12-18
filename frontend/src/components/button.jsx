@@ -3,6 +3,7 @@ import { socket } from "../socket.js";
 import styled from "./button.module.css";
 
 const Button = ({ message, id, onSend }) => {
+  const content = message
   useEffect(() => {
     socket.on("connect", () => console.log("Socket connected!", socket.id));
     return () => {
@@ -11,15 +12,15 @@ const Button = ({ message, id, onSend }) => {
   }, []);
 
   const handleClick = async () => {
-    if (!message || message.trim() === "") return; // avoid empty sends
+    if (!content || content.trim() === "") return; // avoid empty sends
 
     try {
       // Optimistic: notify parent immediately
-      if (typeof onSend === "function") onSend(message);
+      if (typeof onSend === "function") onSend(content);
 
       // Emit via socket
       const UserId = localStorage.getItem("UserId")
-      socket.emit("sendMessage", { message, time: Date.now(), to: id  , user:UserId});
+      socket.emit("sendMessage", { content, time: Date.now(), to: id  , user:UserId});
         socket.emit("register", UserId);
 
 

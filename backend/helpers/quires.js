@@ -293,24 +293,24 @@ export const sendmessage = async (req,res) => {
     const message = req.body.message
 
     
-  //  try {
-  //   // Add a new message to the database
-  //   const newMessage = await prisma.message.create({
-  //     data: {
-  //       senderId: myid,    // Change this to actual sender ID
-  //       receiverId: userid,  // Change this to actual receiver ID
-  //       content: "Hello, this is a test message!",
-  //       // createdAt will be automatically set to now()
-  //     },
-  //   });
+   try {
+    // Add a new message to the database
+    const newMessage = await prisma.message.create({
+      data: {
+        senderId: myid,    // Change this to actual sender ID
+        receiverId: userid,  // Change this to actual receiver ID
+        content: "Hello, this is a test message!",
+        // createdAt will be automatically set to now()
+      },
+    });
 
-  //   console.log('Message created successfully:');
-  //   console.log(newMessage);
-  // } catch (error) {
-  //   console.error('Error creating message:', error);
-  // } finally {
-  //   await prisma.$disconnect();
-  // }
+    console.log('Message created successfully:');
+    console.log(newMessage);
+  } catch (error) {
+    console.error('Error creating message:', error);
+  } finally {
+    await prisma.$disconnect();
+  }
 
 }
 

@@ -27,6 +27,8 @@ function ChatWindow() {
         });
 
         const result = await res.json();
+        console.log(result);
+        
         // Inspect result shape in devtools; adjust below if API returns {messages: [...]}
         // console.log("fetch result:", result);
         if (Array.isArray(result)) {
@@ -62,14 +64,16 @@ function ChatWindow() {
     setInputMessage(""); // clear input after send
   };
    useEffect(() => {
-  socket.on("receiveMessage", (data) => {
-    console.log("New message:", data);
-    setMessages(prev => [...prev, data]);  // adds new msg to UI
-  });
+ socket.on("receiveMessage", (data) => {
+  console.log("New message:", data);
+  setMessages(prev => [...prev, data]);
+  
+});
 
-  return () => socket.off("receiveMessage");
+return () => socket.off("receiveMessage");
 }, []);
 
+console.log("all message",messages);
 
   return (
     <div className={style.ChatWindowWrapper}>

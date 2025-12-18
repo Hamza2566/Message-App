@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Outlet, Link } from 'react-router-dom';
 import  style from'./HomePage.module.css'; 
 import { socket } from "../../socket.js";
